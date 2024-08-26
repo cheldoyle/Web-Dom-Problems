@@ -1,0 +1,7 @@
+.tempConverter {
+    padding-left: 20%;
+    padding-right: 20%;
+}
+.displayTemp h5, p {
+    display: inline;
+}
