@@ -41,30 +41,30 @@ submitButt.addEventListener("click", () => {
             if (oldTempValue == "far") {
                 if (newTempValue == "cel") {
                     newTempDisplay = (tempHolder - 32) * (5/9);
-                    results.push(newTempDisplay.toFixed(2) + " C");
+                    results.push(newTempDisplay + " C");
                 } else if (newTempValue == "kel") {
                     newTempDisplay = (tempHolder + 459.67) * (5/9);
-                    results.push(newTempDisplay.toFixed(2) + " K");
+                    results.push(newTempDisplay + " K");
                 } else {
                     error = "Error: Cannot Convert F to F";
                 }
             } else if (oldTempValue == "cel") {
                 if (newTempValue == "far") {
                     newTempDisplay = (tempHolder * 9/5) + 32;
-                    results.push(newTempDisplay.toFixed(2) + " F");
+                    results.push(newTempDisplay + " F");
                 } else if (newTempValue == "kel") {
                     newTempDisplay = tempHolder + 273.15;
-                    results.push(newTempDisplay.toFixed(2) + " K");
+                    results.push(newTempDisplay + " K");
                 } else {
                     error = "Error: Cannot Convert C to C";
                 }
             } else if (oldTempValue == "kel") {
                 if (newTempValue == "cel") {
                     newTempDisplay = tempHolder - 273.15;
-                    results.push(newTempDisplay.toFixed(2) + " C");
+                    results.push(newTempDisplay + " C");
                 } else if (newTempValue == "far") {
                     newTempDisplay = (tempHolder * 9/5) - 459.67;
-                    results.push(newTempDisplay.toFixed(2) + " F");
+                    results.push(newTempDisplay + " F");
                 } else {
                     error = "Error: Cannot Convert K to K";
                 }
@@ -78,10 +78,18 @@ submitButt.addEventListener("click", () => {
         }
     });
 
-    displayTemp.innerHTML = results.join(', ');
+    displayTemp.innerHTML = results.join('<br>');
 });
 clearButt.addEventListener("click", () => {
     displayTemp.innerHTML = "";
     const tempInputs = document.querySelectorAll('.ogTemp');
     tempInputs.forEach(input => input.value = '');
 });
+
+
+const tempDisplaySec = document.getElementById("displayTemp")
+const displayedTemps = tempDisplaySec.querySelector('.displaySec');
+
+if (displayedTemps) {
+    displayedTemps.style.backgroundColor = "tomato";
+}
