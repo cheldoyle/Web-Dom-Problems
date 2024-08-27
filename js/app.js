@@ -63,5 +63,3 @@ submitButt.addEventListener("click", () => {
         displayTemp.innerHTML = "Error: Incorrect Value Type";
     }
 });
-console.log(oldTempValue);
-console.log(newTempValue);

@@ -80,3 +80,8 @@ submitButt.addEventListener("click", () => {
 
     displayTemp.innerHTML = results.join(', ');
 });
+clearButt.addEventListener("click", () => {
+    displayTemp.innerHTML = "";
+    const tempInputs = document.querySelectorAll('.ogTemp');
+    tempInputs.forEach(input => input.value = '');
+});
