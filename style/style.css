@@ -1,6 +1,16 @@
+.tempSec h1 {
+    text-align: center;
+}
 .tempConverter {
     padding-left: 20%;
     padding-right: 20%;
+}
+.buttSec {
+    padding-left: 20%;
+    padding-right: 20%;
+}
+.enterTempHere input {
+    width: 100%;
 }
 .displayTemp h5, p {
     display: inline;

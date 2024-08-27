@@ -9,27 +9,32 @@
 </head>
 <body>
     <div class="container tempSec">
-        <div class="tempConverter row">
-            <h1>Temp Converter</h1>
-            <div class="tempMenus row">
+        <h1>Temp Converter</h1>
+        <div class="tempConverter row" id="tempConverter">
+            <div class="tempMenus row" id="tempMenus">
                 <div class="tempChooser col-6" id="oldTemp">
                     <label for="tempChoice">Choose OG Temp:</label>
-                    <select name="tempChoice" id="tempChoice">
-                    <option value="far">Farenheit</option>
+                    <select name="tempChoice" id="tempChoice" class="tempChoice">
+                    <option value="far">Fahrenheit</option>
                     <option value="cel">Celsius</option>
                     <option value="kel">Kelvin</option>
                     </select>
                 </div>
                 <div class="newTempChooser col-6" id="newlyTemped">
                     <label for="newTempChoice">Choose New Temp:</label>
-                    <select name="newTempChoice" id="newTempChoice">
+                    <select name="newTempChoice" id="newTempChoice" class="newT">
                     <option value="far">Farenheit</option>
                     <option value="cel">Celsius</option>
                     <option value="kel">Kelvin</option>
                     </select>
                 </div>
+                <div class="enterTempHere">
+                    <input type="number" placeholder="Temp to Convert" id="ogTemp" class="ogTemp">
+                </div>
             </div>
-            <input type="text" placeholder="Temp in F" id="ogTemp">
+        </div>
+        <div class="buttSec">
+            <input type="button" value="Add Another Temp" id="anotherTemp">
             <input type="button" value="Submit" id="signButt">
             <div class="displayTemp">
                 <h5>New Temp: </h5>
@@ -41,5 +46,5 @@
         </div>
     </div>
 </body>
-<script type="text/javascript" src="./js/app.js"></script>
+<script type="text/javascript" src="./js/makenewwork.js"></script>
 </html>
