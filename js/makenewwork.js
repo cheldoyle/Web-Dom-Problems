@@ -4,6 +4,11 @@ const submitButt = document.getElementById('signButt');
 const displayTemp = document.querySelector(".displayTemp p");
 const clearButt = document.querySelector(".clearButt input");
 
+const displayLoc = document.querySelector(".displayTemp");
+const newDisplay = document.createElement("p");
+
+const xButt = document.getElementById("xButt");
+
 // Add new temperature input box
 addTempBtn.addEventListener('click', () => {
     // Get the first tempMenus div
@@ -19,11 +24,23 @@ addTempBtn.addEventListener('click', () => {
     tempConverter.appendChild(newTempMenus);
 });
 
+xButt.addEventListener('click', () => {
+    const tempMenusToRemove = tempConverter.querySelectorAll('.tempMenus');
+    if (tempMenusToRemove.length > 1) { 
+        tempMenusToRemove[tempMenusToRemove.length - 1].remove();
+        displayLoc.innerHTML = "";
+    }
+})
+
 // Convert temperatures
 submitButt.addEventListener("click", () => {
     // Collect all tempMenus
     const tempMenusArray = Array.from(tempConverter.querySelectorAll('.tempMenus'));
-    let results = [];
+    let displayLoc = document.querySelector(".displayTemp");
+    let newDisplay = document.createElement("p");
+    let numIt = 0;
+
+    displayLoc.innerHTML = "";
 
     tempMenusArray.forEach(tempMenus => {
         const oldTempSelect = tempMenus.querySelector('.tempChoice');
@@ -34,6 +51,9 @@ submitButt.addEventListener("click", () => {
         const newTempValue = newTempSelect.value;
         const tempHolder = tempInput.value;
 
+        let displayLoc = document.querySelector(".displayTemp");
+        let newDisplay = document.createElement("p");
+
         let newTempDisplay = 0;
         let error = '';
 
@@ -41,55 +61,60 @@ submitButt.addEventListener("click", () => {
             if (oldTempValue == "far") {
                 if (newTempValue == "cel") {
                     newTempDisplay = (tempHolder - 32) * (5/9);
-                    results.push(newTempDisplay + " C");
+                    newDisplay.innerHTML = newTempDisplay + " C";
+                    displayLoc.append(newDisplay);
                 } else if (newTempValue == "kel") {
                     newTempDisplay = (tempHolder + 459.67) * (5/9);
-                    results.push(newTempDisplay + " K");
+                    newDisplay.innerHTML = newTempDisplay + " K";
+                    displayLoc.append(newDisplay);
                 } else {
-                    error = "Error: Cannot Convert F to F";
+                    error = "エラー: F を F に変換できません";
                 }
             } else if (oldTempValue == "cel") {
                 if (newTempValue == "far") {
                     newTempDisplay = (tempHolder * 9/5) + 32;
-                    results.push(newTempDisplay + " F");
+                    newDisplay.innerHTML = newTempDisplay + " F";
+                    displayLoc.append(newDisplay);
                 } else if (newTempValue == "kel") {
                     newTempDisplay = tempHolder + 273.15;
-                    results.push(newTempDisplay + " K");
+                    newDisplay.innerHTML = newTempDisplay + " K";
+                    displayLoc.append(newDisplay);
                 } else {
-                    error = "Error: Cannot Convert C to C";
+                    error = "エラー: C を C に変換できません ";
                 }
             } else if (oldTempValue == "kel") {
                 if (newTempValue == "cel") {
                     newTempDisplay = tempHolder - 273.15;
-                    results.push(newTempDisplay + " C");
+                    newDisplay.innerHTML = newTempDisplay + " C";
+                    displayLoc.append(newDisplay);
                 } else if (newTempValue == "far") {
                     newTempDisplay = (tempHolder * 9/5) - 459.67;
-                    results.push(newTempDisplay + " F");
+                    newDisplay.innerHTML = newTempDisplay + " F";
+                    displayLoc.append(newDisplay);
                 } else {
-                    error = "Error: Cannot Convert K to K";
+                    error = "エラー: K を K に変換できません";
                 }
             }
         } else {
-            error = "Error: No Value";
+            error = "エラー: 値がありません";
         }
 
         if (error) {
-            results.push(error);
+            newDisplay.innerHTML = error;
+            displayLoc.append(newDisplay);;
         }
+        if (numIt % 2 == 0) {
+            newDisplay.style.backgroundColor = "#ffe3e3"
+        } else {
+            newDisplay.style.backgroundColor = "#d0d0d0"
+        }
+    
+        numIt++;
     });
 
-    displayTemp.innerHTML = results.join('<br>');
 });
 clearButt.addEventListener("click", () => {
-    displayTemp.innerHTML = "";
+    displayLoc.innerHTML = "";
     const tempInputs = document.querySelectorAll('.ogTemp');
     tempInputs.forEach(input => input.value = '');
 });
-
-
-const tempDisplaySec = document.getElementById("displayTemp")
-const displayedTemps = tempDisplaySec.querySelector('.displaySec');
-
-if (displayedTemps) {
-    displayedTemps.style.backgroundColor = "tomato";
-}

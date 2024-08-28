@@ -5,43 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style/style.css">
     <link rel="stylesheet" href="./style/bootstrap.css">
-    <title>Temp Conversion</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <title>温度変換ツール</title>
 </head>
 <body>
-    <div class="container tempSec">
-        <h1>Temp Converter</h1>
-        <div class="tempConverter row" id="tempConverter">
-            <div class="tempMenus row" id="tempMenus">
-                <div class="tempChooser col-6" id="oldTemp">
-                    <label for="tempChoice">Choose OG Temp:</label>
-                    <select name="tempChoice" id="tempChoice" class="tempChoice">
-                    <option value="far">Fahrenheit</option>
-                    <option value="cel">Celsius</option>
-                    <option value="kel">Kelvin</option>
-                    </select>
-                </div>
-                <div class="newTempChooser col-6" id="newlyTemped">
-                    <label for="newTempChoice">Choose New Temp:</label>
-                    <select name="newTempChoice" id="newTempChoice" class="newT">
-                    <option value="far">Farenheit</option>
-                    <option value="cel">Celsius</option>
-                    <option value="kel">Kelvin</option>
-                    </select>
-                </div>
-                <div class="enterTempHere">
-                    <input type="number" placeholder="Temp to Convert" id="ogTemp" class="ogTemp">
+    <div class="wrapper">
+        <div class="container tempSec">
+            <h1>温度変換ツール</h1>
+            <div class="tempConverter row" id="tempConverter">
+                <div class="tempMenus row" id="tempMenus">
+                    <div class="tempChooser col-12 col-md-6" id="oldTemp">
+                        <select name="tempChoice" id="tempChoice" class="tempChoice">
+                        <option value="">--OG温度--</option>
+                        <option value="far">華氏</option>
+                        <option value="cel">摂氏</option>
+                        <option value="kel">ケルビン</option>
+                        </select>
+                    </div>
+                    <div class="newTempChooser col-12 col-md-6" id="newlyTemped">
+                        <select name="newTempChoice" id="newTempChoice" class="newT">
+                        <option value="">--新しい温度--</option>
+                        <option value="far">華氏</option>
+                        <option value="cel">摂氏</option>
+                        <option value="kel">ケルビン</option>
+                        </select>
+                    </div>
+                    <div class="enterTempHere">
+                        <input type="number" placeholder="温度" id="ogTemp" class="ogTemp col-5">
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="buttSec">
-            <input type="button" value="Add Another Temp" id="anotherTemp">
-            <input type="button" value="Submit" id="signButt">
-            <div class="displayTemp" id="displayTemp">
-                <h5>New Temp: </h5>
-                <p class="displaySec" id="displaySec"></p>
-            </div>
-            <div class="clearButt">
-                <input type="button" value="Clear">
+            <div class="buttSec">
+                <input type="button" value="もう一つの温度を追加する" id="anotherTemp">
+                <input type="button" value="削除" id="xButt">
+                <input type="button" value="入力" id="signButt">
+                <h5>新しい温度: </h5>
+                <div class="displayTemp" id="displayTemp">
+                </div>
+                <div class="clearButt">
+                    <input type="button" value="リセット">
+                </div>
             </div>
         </div>
     </div>
