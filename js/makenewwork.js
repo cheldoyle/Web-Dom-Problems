@@ -38,7 +38,6 @@ submitButt.addEventListener("click", () => {
     const tempMenusArray = Array.from(tempConverter.querySelectorAll('.tempMenus'));
     let displayLoc = document.querySelector(".displayTemp");
     let newDisplay = document.createElement("p");
-    let numIt = 0;
 
     displayLoc.innerHTML = "";
 
@@ -103,13 +102,6 @@ submitButt.addEventListener("click", () => {
             newDisplay.innerHTML = error;
             displayLoc.append(newDisplay);;
         }
-        if (numIt % 2 == 0) {
-            newDisplay.style.backgroundColor = "#ffe3e3"
-        } else {
-            newDisplay.style.backgroundColor = "#d0d0d0"
-        }
-    
-        numIt++;
     });
 
 });
