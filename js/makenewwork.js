@@ -56,7 +56,7 @@ submitButt.addEventListener("click", () => {
         let newTempDisplay = 0;
         let error = '';
 
-        if (Number(tempHolder)) {
+        if (Number(tempHolder) || tempHolder == 0) {
             if (oldTempValue == "far") {
                 if (newTempValue == "cel") {
                     newTempDisplay = (tempHolder - 32) * (5/9);
